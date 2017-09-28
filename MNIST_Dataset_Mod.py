@@ -133,17 +133,11 @@ def main(_):
 
     # Import data
     train_images, train_labels, validation_images, validation_labels, test_images, test_labels = load_mnist(FLAGS.data_dir)
-
-    one_tensor = tf.ones([1, 28, 28, 1])
-
-    one_numpy = np.ones([2, 30])
-
     num_steps = int(np.floor(train_images.shape[0]/batch_size))
 
     #make placeholders for dataset
     features_placeholder_train = tf.placeholder(dtype=tf.float32, shape=train_images.shape)
     labels_placeholder_train = tf.placeholder(dtype=train_labels.dtype, shape=train_labels.shape)
-
 
     #make data set from placeholders
     dataset = Dataset.from_tensor_slices((features_placeholder_train,labels_placeholder_train))
